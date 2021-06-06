@@ -1,5 +1,7 @@
+
 package question3;
 
+import java.util.ArrayList;
 /**
  * NFP121 TpIntroduction, usage de BlueJ et du "Submitter".
  * 
@@ -45,7 +47,47 @@ public class AuditeurCNAM {
      *         homonymes...
      */
     public String login() {
-        return "";// à compléter
+        //ArrayList<String> array = new ArrayList<String>();
+        String login = "";
+        String[] array =  this.nom.split("");
+        String[] array2 =  this.prenom.split("");
+        for (int j=0; j<array2.length; j++){
+            //capital to small
+            array2[j] = array2[j].toLowerCase();
+                }
+        for (int i=0; i<array.length; i++){
+            //capital to small
+            array[i] = array[i].toLowerCase();
+
+             //replace - and space  by _
+            String shi = array[i];   
+            if(array[i].equals("-") || array[i].equals(" ") || array[i].equals("?")) {
+                   
+                   array[i] = "_";
+               }
+
+               //replace é by e
+               if(array[i].equals("é")) {
+                   
+                   array[i] = "e";
+               }
+           }
+           
+        if(array.length < 6) {
+            //bacause of error out of bounds
+           for (int i=0; i<array.length; i++){
+               login += array[i] + "";
+           }
+           login += "_" + array2[0];
+        }
+        else{
+            for (int i=0; i<6; i++){
+               login += array[i] + "";
+           }
+           login += "_" + array2[0];
+        }
+
+        return login;// à compléter
     }
 
     /**
@@ -54,7 +96,7 @@ public class AuditeurCNAM {
      * @return son nom
      */
     public String nom() {
-        return null;// à compléter
+        return this.nom;// à compléter
     }
 
     /**
@@ -63,7 +105,7 @@ public class AuditeurCNAM {
      * @return son prénom
      */
     public String prenom() {
-        return null;// à compléter
+        return this.prenom;// à compléter
     }
 
     /**
@@ -72,7 +114,7 @@ public class AuditeurCNAM {
      * @return son matricule
      */
     public String matricule() {
-        return null;// à compléter
+        return this.matricule;// à compléter
     }
 
     /**
@@ -84,7 +126,7 @@ public class AuditeurCNAM {
      */
     @Override
     public String toString() {
-        return nom() + " " + prenom() + " login : " + login();
+        return this.nom() + " " + this.prenom() + " login : " + login();
     }
 
 }
